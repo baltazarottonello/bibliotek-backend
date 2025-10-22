@@ -1,0 +1,131 @@
+import {
+  BelongsTo,
+  BelongsToMany,
+  Column,
+  DataType,
+  ForeignKey,
+  //   ForeignKey,
+  //   HasMany,
+  Model,
+  Table,
+} from 'sequelize-typescript';
+import { Journal } from 'src/database/models/journal.model';
+import { PubType } from './pub_type.model';
+import { ArticlePubType } from './article-pub-type.model';
+import { Author } from './author.model';
+import { ArticleAuthor } from './article-author.model';
+import { Mesh } from './mesh.model';
+import { ArticleMesh } from './article-mesh.model';
+import { Language } from './language.model';
+import { ArticleLanguage } from './article-language.model';
+
+@Table({
+  tableName: 'pubmed_articles',
+  freezeTableName: true,
+  underscored: true,
+  indexes: [{ unique: true, fields: ['pmid'] }],
+})
+export class Article extends Model {
+  @Column({
+    type: DataType.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  })
+  //@ts-expect-error // Model already defines id
+  id: number;
+
+  @Column({
+    type: DataType.INTEGER,
+    allowNull: false,
+  })
+  pmid: number;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  title: string;
+
+  @Column({
+    type: DataType.INTEGER,
+    allowNull: false,
+  })
+  year: number;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  status: string;
+
+  @ForeignKey(() => Journal)
+  @Column({
+    type: DataType.INTEGER,
+    allowNull: false,
+  })
+  journal_id: number;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: true,
+    defaultValue: null,
+  })
+  doi: string;
+
+  @Column({
+    type: DataType.INTEGER,
+    allowNull: true,
+    defaultValue: null,
+  })
+  month: number;
+
+  @Column({
+    type: DataType.INTEGER,
+    allowNull: true,
+    defaultValue: null,
+  })
+  volume: number;
+
+  @Column({
+    type: DataType.INTEGER,
+    allowNull: true,
+    defaultValue: null,
+  })
+  issue: number;
+
+  @Column({
+    type: DataType.INTEGER,
+    allowNull: true,
+    defaultValue: null,
+  })
+  start_page: number;
+
+  @Column({
+    type: DataType.INTEGER,
+    allowNull: true,
+    defaultValue: null,
+  })
+  end_page: number;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: true,
+    defaultValue: null,
+  })
+  abstract: string;
+
+  @BelongsTo(() => Journal)
+  journal: Journal;
+
+  @BelongsToMany(() => PubType, { through: () => ArticlePubType })
+  pubTypes: PubType[];
+
+  @BelongsToMany(() => Author, { through: () => ArticleAuthor })
+  authors: Author[];
+
+  @BelongsToMany(() => Mesh, { through: () => ArticleMesh })
+  mesh: Mesh[];
+
+  @BelongsToMany(() => Language, { through: () => ArticleLanguage })
+  languages: Language[];
+}
