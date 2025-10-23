@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { CreationAttributes, Model } from 'sequelize';
+import { CreationAttributes, FindOptions, Model } from 'sequelize';
 import { IBaseService } from './ibase.service';
 import type { Repository } from 'sequelize-typescript';
 
@@ -13,6 +13,15 @@ export class BaseService<T extends Model> implements IBaseService<T> {
       throw new Error(`Error creating article.` + (error as Error).message);
     }
   }
+
+  async findOne(options: FindOptions<T>): Promise<T | null> {
+    try {
+      return await this.genericRepo.findOne(options);
+    } catch (error) {
+      throw new Error(`Error finding article.` + (error as Error).message);
+    }
+  }
+
   async findAll(): Promise<T[]> {
     try {
       return await this.genericRepo.findAll();

@@ -10,14 +10,14 @@ export class JournalsService extends BaseService<Journal> {
   }
   async create(attributes: CreationAttributes<Journal>): Promise<Journal> {
     try {
-      return await this.journalRepo.create(attributes);
+      return await super.create(attributes);
     } catch (error) {
       throw new Error(`Error creating journal.` + (error as Error).message);
     }
   }
   async findAll(): Promise<Journal[]> {
     try {
-      return await this.journalRepo.findAll();
+      return await super.findAll();
     } catch (error) {
       throw new Error(`Error finding all journals.` + (error as Error).message);
     }
@@ -34,7 +34,7 @@ export class JournalsService extends BaseService<Journal> {
 
   async findByTitle(title: string): Promise<Journal | null> {
     try {
-      return await this.journalRepo.findOne({ where: { title } });
+      return await super.findOne({ where: { title } });
     } catch (error) {
       throw new Error(
         `Error finding journal by title.` + (error as Error).message,
