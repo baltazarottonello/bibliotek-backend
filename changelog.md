@@ -1,3 +1,7 @@
+23/10/2025
+
+- Articles controller and all the needed Services for create an Article
+
 19/10/2025
 
 - Add Countries module and Country model, and establish relationship with Journal model

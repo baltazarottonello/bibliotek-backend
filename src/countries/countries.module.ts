@@ -6,5 +6,6 @@ import { CountriesService } from './countries.service';
 @Module({
   imports: [SequelizeModule.forFeature([Country])],
   providers: [CountriesService],
+  exports: [CountriesService],
 })
 export class CountriesModule {}

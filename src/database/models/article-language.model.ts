@@ -15,14 +15,6 @@ import { Language } from './language.model';
   indexes: [{ fields: ['article_id'] }, { fields: ['language_id'] }],
 })
 export class ArticleLanguage extends Model {
-  @Column({
-    type: DataType.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  })
-  //@ts-expect-error // Model already defines id
-  id: number;
-
   @ForeignKey(() => Article)
   @Column({
     type: DataType.INTEGER,

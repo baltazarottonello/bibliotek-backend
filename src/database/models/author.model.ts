@@ -9,6 +9,8 @@ import {
 } from 'sequelize-typescript';
 import { ArticleAuthor } from './article-author.model';
 import { Article } from './article.model';
+import { Affiliation } from './affiliation.model';
+import { AffiliationAuthor } from './affiliation-author.model';
 
 @Table({
   tableName: 'pubmed_authors',
@@ -20,14 +22,6 @@ import { Article } from './article.model';
   ],
 })
 export class Author extends Model {
-  @Column({
-    type: DataType.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  })
-  //@ts-expect-error // Model already defines id
-  id: number;
-
   @Column({
     type: DataType.STRING,
     allowNull: true,
@@ -51,4 +45,7 @@ export class Author extends Model {
 
   @BelongsToMany(() => Article, { through: () => ArticleAuthor })
   articles: Article[];
+
+  @BelongsToMany(() => Affiliation, { through: () => AffiliationAuthor })
+  affiliations: Affiliation[];
 }
