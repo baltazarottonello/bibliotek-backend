@@ -17,14 +17,6 @@ import { Mesh } from './mesh.model';
   indexes: [{ fields: ['article_id'] }, { fields: ['mesh_id'] }],
 })
 export class ArticleMesh extends Model {
-  @Column({
-    type: DataType.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  })
-  //@ts-expect-error // Model already defines id
-  id: number;
-
   @ForeignKey(() => Article)
   @Column({
     type: DataType.INTEGER,

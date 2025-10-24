@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { AffiliationGroup } from 'src/database/models/affiliation-group';
+import { AffiliationGroup } from 'src/database/models/affiliation-group.model';
 
 @Module({
   imports: [SequelizeModule.forFeature([AffiliationGroup])],

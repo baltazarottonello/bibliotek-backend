@@ -24,14 +24,6 @@ import { Article } from './article.model';
   ],
 })
 export class ArticlePubType extends Model {
-  @Column({
-    type: DataType.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  })
-  //@ts-expect-error // Model already defines id
-  id: number;
-
   @ForeignKey(() => PubType)
   @Column({
     type: DataType.INTEGER,

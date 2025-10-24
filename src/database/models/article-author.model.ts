@@ -24,14 +24,6 @@ import { Author } from './author.model';
   ],
 })
 export class ArticleAuthor extends Model {
-  @Column({
-    type: DataType.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  })
-  //@ts-expect-error // Model already defines id
-  id: number;
-
   @ForeignKey(() => Article)
   @Column({
     type: DataType.INTEGER,

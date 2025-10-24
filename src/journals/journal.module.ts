@@ -6,5 +6,6 @@ import { JournalsService } from './journals.service';
 @Module({
   imports: [SequelizeModule.forFeature([Journal])],
   providers: [JournalsService],
+  exports: [JournalsService],
 })
 export class JournalModule {}

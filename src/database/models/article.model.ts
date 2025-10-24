@@ -23,17 +23,12 @@ import { ArticleLanguage } from './article-language.model';
   tableName: 'pubmed_articles',
   freezeTableName: true,
   underscored: true,
-  indexes: [{ unique: true, fields: ['pmid'] }],
+  indexes: [
+    { unique: true, fields: ['pmid'] },
+    { unique: true, fields: ['doi'] },
+  ],
 })
 export class Article extends Model {
-  @Column({
-    type: DataType.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  })
-  //@ts-expect-error // Model already defines id
-  id: number;
-
   @Column({
     type: DataType.INTEGER,
     allowNull: false,

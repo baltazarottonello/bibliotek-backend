@@ -18,14 +18,6 @@ import { ArticlePubType } from './article-pub-type.model';
 })
 export class PubType extends Model {
   @Column({
-    type: DataType.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  })
-  //@ts-expect-error // Model already defines id
-  id: number;
-
-  @Column({
     type: DataType.STRING,
     allowNull: true,
     defaultValue: null,

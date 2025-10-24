@@ -1,12 +1,15 @@
 import {
   BelongsTo,
+  BelongsToMany,
   Column,
   DataType,
   ForeignKey,
   Model,
   Table,
 } from 'sequelize-typescript';
-import { AffiliationGroup } from './affiliation-group';
+import { AffiliationGroup } from './affiliation-group.model';
+import { Author } from './author.model';
+import { AffiliationAuthor } from './affiliation-author.model';
 
 @Table({
   tableName: 'pubmed_affiliations',
@@ -16,14 +19,6 @@ import { AffiliationGroup } from './affiliation-group';
 })
 export class Affiliation extends Model {
   @Column({
-    type: DataType.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  })
-  //@ts-expect-error // Model already defines id
-  id: number;
-
-  @Column({
     type: DataType.STRING,
     allowNull: false,
   })
@@ -32,7 +27,8 @@ export class Affiliation extends Model {
   @ForeignKey(() => AffiliationGroup)
   @Column({
     type: DataType.INTEGER,
-    allowNull: false,
+    allowNull: true,
+    defaultValue: null,
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
@@ -40,4 +36,7 @@ export class Affiliation extends Model {
 
   @BelongsTo(() => AffiliationGroup)
   affiliationGroup: AffiliationGroup;
+
+  @BelongsToMany(() => Author, { through: () => AffiliationAuthor })
+  authors: Author[];
 }

@@ -1,20 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { CreationAttributes } from 'sequelize';
+import { InjectModel } from '@nestjs/sequelize';
 import { BaseService } from 'src/database/base/base.service';
 import { Country } from 'src/database/models/country.model';
 
 @Injectable()
 export class CountriesService extends BaseService<Country> {
-  constructor(protected readonly countryRepo: typeof Country) {
+  constructor(@InjectModel(Country) countryRepo: typeof Country) {
     super(countryRepo);
-  }
-
-  async create(attributes: CreationAttributes<Country>): Promise<Country> {
-    try {
-      return await super.create(attributes);
-    } catch (error) {
-      throw new Error(`Error creating country.` + (error as Error).message);
-    }
   }
 
   async findAll(): Promise<Country[]> {
@@ -27,9 +19,9 @@ export class CountriesService extends BaseService<Country> {
     }
   }
 
-  async findByName(name: string): Promise<Country | null> {
+  async findByName(name: string, opts?: any): Promise<Country | null> {
     try {
-      return await super.findOne({ where: { name } });
+      return await super.findOne({ where: { name }, ...opts });
     } catch (error) {
       throw new Error(
         `Error finding country by name.` + (error as Error).message,

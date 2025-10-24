@@ -16,6 +16,7 @@ import { AffiliationsModule } from './affiliations/affiliations.module';
 import { LanguagesModule } from './languages/languages.module';
 import { ArticlesLanguageModule } from './articles-language/articles-language.module';
 import { CountriesModule } from './countries/countries.module';
+import { AffiliationsAuthorsModule } from './affiliations-authors/affiliations-authors.module';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { CountriesModule } from './countries/countries.module';
     AffiliationsModule,
     LanguagesModule,
     ArticlesLanguageModule,
+    AffiliationsAuthorsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

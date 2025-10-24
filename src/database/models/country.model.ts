@@ -9,14 +9,6 @@ import { Journal } from './journal.model';
 })
 export class Country extends Model {
   @Column({
-    type: DataType.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  })
-  //@ts-expect-error // Model already defines id
-  id: number;
-
-  @Column({
     type: DataType.STRING,
     allowNull: false,
   })

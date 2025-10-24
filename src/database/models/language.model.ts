@@ -16,14 +16,6 @@ import { ArticleLanguage } from './article-language.model';
 })
 export class Language extends Model {
   @Column({
-    type: DataType.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  })
-  //@ts-expect-error // Model already defines id
-  id: number;
-
-  @Column({
     type: DataType.STRING,
     allowNull: false,
   })
