@@ -31,7 +31,7 @@ export class ArticlePubType extends Model {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
-  pub_type_id: number;
+  declare pub_type_id: number;
 
   @ForeignKey(() => Article)
   @Column({
@@ -40,5 +40,5 @@ export class ArticlePubType extends Model {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
-  article_id: number;
+  declare article_id: number;
 }

@@ -16,7 +16,7 @@ export class AffiliationAuthor extends Model {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
-  affiliation_id: number;
+  declare affiliation_id: number;
 
   @ForeignKey(() => Author)
   @Column({
@@ -25,5 +25,5 @@ export class AffiliationAuthor extends Model {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
-  author_id: number;
+  declare author_id: number;
 }

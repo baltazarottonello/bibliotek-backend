@@ -22,8 +22,8 @@ export class PubType extends Model {
     allowNull: true,
     defaultValue: null,
   })
-  name: string;
+  declare name: string;
 
   @BelongsToMany(() => Article, { through: () => ArticlePubType })
-  articles: Article[];
+  declare articles: Article[];
 }

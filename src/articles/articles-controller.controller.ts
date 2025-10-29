@@ -15,12 +15,13 @@ export class ArticlesController {
     private readonly pubTypesService: PubTypesService,
   ) {}
   @Post()
-  async createArticle(@Body() articleDto: CreateArticleDto): Promise<Article> {
+  async createArticle(
+    @Body() articles: CreateArticleDto[],
+  ): Promise<Article[]> {
     try {
-      const article = await this.articlesService.create(articleDto);
-      return article;
+      return await this.articlesService.createChunk(articles);
     } catch (error) {
-      throw new Error(`Error creating article.` + (error as Error).message);
+      throw new Error(`Error creating articles.` + (error as Error).message);
     }
   }
 }

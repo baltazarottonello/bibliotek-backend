@@ -16,36 +16,33 @@ import { AffiliationAuthor } from './affiliation-author.model';
   tableName: 'pubmed_authors',
   freezeTableName: true,
   underscored: true,
-  indexes: [
-    { unique: true, fields: ['orcid'] },
-    { unique: true, fields: ['name', 'lastname', 'orcid'] },
-  ],
+  indexes: [{ unique: true, fields: ['orcid'] }],
 })
 export class Author extends Model {
   @Column({
-    type: DataType.STRING,
+    type: DataType.TEXT,
     allowNull: true,
     defaultValue: null,
   })
-  name: string;
+  declare name: string;
 
   @Column({
     type: DataType.STRING,
     allowNull: true,
     defaultValue: null,
   })
-  lastname: string;
+  declare lastname: string;
 
   @Column({
     type: DataType.STRING,
     allowNull: true,
     defaultValue: null,
   })
-  orcid: string;
+  declare orcid: string;
 
   @BelongsToMany(() => Article, { through: () => ArticleAuthor })
-  articles: Article[];
+  declare articles: Article[];
 
   @BelongsToMany(() => Affiliation, { through: () => AffiliationAuthor })
-  affiliations: Affiliation[];
+  declare affiliations: Affiliation[];
 }

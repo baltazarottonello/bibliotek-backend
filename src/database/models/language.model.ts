@@ -19,8 +19,8 @@ export class Language extends Model {
     type: DataType.STRING,
     allowNull: false,
   })
-  name: string;
+  declare name: string;
 
   @BelongsToMany(() => Article, { through: () => ArticleLanguage })
-  articles: Article[];
+  declare articles: Article[];
 }

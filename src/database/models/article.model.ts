@@ -33,94 +33,94 @@ export class Article extends Model {
     type: DataType.INTEGER,
     allowNull: false,
   })
-  pmid: number;
+  declare pmid: number;
 
   @Column({
-    type: DataType.STRING,
+    type: DataType.TEXT,
     allowNull: false,
   })
-  title: string;
+  declare title: string;
 
   @Column({
     type: DataType.INTEGER,
     allowNull: false,
   })
-  year: number;
+  declare year: number;
 
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
-  status: string;
+  declare status: string;
 
   @ForeignKey(() => Journal)
   @Column({
     type: DataType.INTEGER,
     allowNull: false,
   })
-  journal_id: number;
+  declare journal_id: number;
 
   @Column({
     type: DataType.STRING,
     allowNull: true,
     defaultValue: null,
   })
-  doi: string;
+  declare doi: string;
 
   @Column({
     type: DataType.INTEGER,
     allowNull: true,
     defaultValue: null,
   })
-  month: number;
+  declare month: number;
 
   @Column({
     type: DataType.INTEGER,
     allowNull: true,
     defaultValue: null,
   })
-  volume: number;
+  declare volume: number;
 
   @Column({
     type: DataType.INTEGER,
     allowNull: true,
     defaultValue: null,
   })
-  issue: number;
-
-  @Column({
-    type: DataType.INTEGER,
-    allowNull: true,
-    defaultValue: null,
-  })
-  start_page: number;
-
-  @Column({
-    type: DataType.INTEGER,
-    allowNull: true,
-    defaultValue: null,
-  })
-  end_page: number;
+  declare issue: number;
 
   @Column({
     type: DataType.STRING,
     allowNull: true,
     defaultValue: null,
   })
-  abstract: string;
+  declare start_page: string;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: true,
+    defaultValue: null,
+  })
+  declare end_page: string;
+
+  @Column({
+    type: DataType.TEXT,
+    allowNull: true,
+    defaultValue: null,
+  })
+  declare abstract: string;
 
   @BelongsTo(() => Journal)
-  journal: Journal;
+  declare journal: Journal;
 
   @BelongsToMany(() => PubType, { through: () => ArticlePubType })
-  pubTypes: PubType[];
+  declare pubTypes: PubType[];
 
   @BelongsToMany(() => Author, { through: () => ArticleAuthor })
-  authors: Author[];
+  declare authors: Author[];
 
   @BelongsToMany(() => Mesh, { through: () => ArticleMesh })
-  mesh: Mesh[];
+  declare mesh: Mesh[];
 
   @BelongsToMany(() => Language, { through: () => ArticleLanguage })
-  languages: Language[];
+  declare languages: Language[];
 }

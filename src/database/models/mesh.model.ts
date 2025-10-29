@@ -21,14 +21,14 @@ export class Mesh extends Model {
     type: DataType.STRING,
     allowNull: false,
   })
-  ui: string;
+  declare ui: string;
 
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
-  name: string;
+  declare name: string;
 
   @BelongsToMany(() => Article, { through: () => ArticleMesh })
-  articles: Article[];
+  declare articles: Article[];
 }

@@ -22,7 +22,7 @@ export class ArticleLanguage extends Model {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
-  article_id: number;
+  declare article_id: number;
 
   @ForeignKey(() => Language)
   @Column({
@@ -31,5 +31,5 @@ export class ArticleLanguage extends Model {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
-  language_id: number;
+  declare language_id: number;
 }
