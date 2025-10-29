@@ -31,7 +31,7 @@ export class ArticleAuthor extends Model {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
-  article_id: number;
+  declare article_id: number;
 
   @ForeignKey(() => Author)
   @Column({
@@ -40,5 +40,5 @@ export class ArticleAuthor extends Model {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
-  author_id: number;
+  declare author_id: number;
 }

@@ -9,18 +9,18 @@ export class CreateArticleDto {
   types: PubTypeDto[];
   volume?: number;
   issue?: number;
-  startPage?: number;
-  endPage?: number;
+  start_page?: string;
+  end_page?: string;
   abstract?: string;
   authors?: AuthorDto[];
-  languages?: LanguageDto[];
+  langs?: LanguageDto[];
   mesh?: MeshDto[];
   journal: JournalDto;
 }
 
 export class AuthorDto {
   name: string;
-  lastName: string;
+  lastname: string;
   orcid?: string;
   affiliations?: AffiliationDto[];
 }
@@ -40,8 +40,8 @@ export class MeshDto {
 
 export class JournalDto {
   title: string;
-  country: string;
-  abbreviation?: string;
+  country?: string;
+  abbr?: string;
   issn?: string;
   issn_type?: string;
 }

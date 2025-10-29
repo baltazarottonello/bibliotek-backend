@@ -11,8 +11,8 @@ export class AffiliationGroup extends Model {
     type: DataType.STRING,
     allowNull: false,
   })
-  name: string;
+  declare name: string;
 
   @HasMany(() => Affiliation)
-  affiliations: Affiliation[];
+  declare affiliations: Affiliation[];
 }

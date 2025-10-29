@@ -12,8 +12,8 @@ export class Country extends Model {
     type: DataType.STRING,
     allowNull: false,
   })
-  name: string;
+  declare name: string;
 
   @HasMany(() => Journal)
-  journals: Journal[];
+  declare journals: Journal[];
 }

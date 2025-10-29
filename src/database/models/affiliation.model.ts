@@ -15,14 +15,21 @@ import { AffiliationAuthor } from './affiliation-author.model';
   tableName: 'pubmed_affiliations',
   freezeTableName: true,
   underscored: true,
-  indexes: [{ unique: true, fields: ['name'] }],
+  indexes: [{ unique: true, fields: ['name_hash'] }], // Index on first 255 characters of name
 })
 export class Affiliation extends Model {
   @Column({
-    type: DataType.STRING,
+    type: DataType.TEXT,
     allowNull: false,
   })
-  name: string;
+  declare name: string;
+
+  @Column({
+    type: DataType.STRING(64), // SHA-256 en hex son 64 chars
+    allowNull: false,
+    unique: true, // índice único real
+  })
+  declare name_hash: string;
 
   @ForeignKey(() => AffiliationGroup)
   @Column({
@@ -32,11 +39,11 @@ export class Affiliation extends Model {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
-  affiliation_group_id: number;
+  declare affiliation_group_id: number;
 
   @BelongsTo(() => AffiliationGroup)
-  affiliationGroup: AffiliationGroup;
+  declare affiliationGroup: AffiliationGroup;
 
   @BelongsToMany(() => Author, { through: () => AffiliationAuthor })
-  authors: Author[];
+  declare authors: Author[];
 }

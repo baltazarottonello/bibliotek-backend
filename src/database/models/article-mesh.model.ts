@@ -24,7 +24,7 @@ export class ArticleMesh extends Model {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
-  article_id: number;
+  declare article_id: number;
 
   @ForeignKey(() => Mesh)
   @Column({
@@ -33,5 +33,5 @@ export class ArticleMesh extends Model {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
-  mesh_id: number;
+  declare mesh_id: number;
 }

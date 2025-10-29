@@ -1,0 +1,22 @@
+# Ignorar dependencias
+node_modules
+**/node_modules
+
+# Ignorar artefactos de build
+dist
+**/dist
+
+# Ignorar archivos de frontend si no los necesita el backend
+web/
+docker/
+
+# Archivos de control de versiones
+.git
+.gitignore
+
+# Logs y otros
+*.log
+.env
+.env.*
+Dockerfile
+README.md

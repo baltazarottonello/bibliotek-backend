@@ -13,7 +13,9 @@ export class AuthorsService extends BaseService<Author> {
     try {
       return super.findOne({ where: { name }, ...opts });
     } catch (error) {
-      throw new Error(`Error finding author by name: ${name}`);
+      throw new Error(
+        `Error finding author by name: ${name}` + (error as Error).message,
+      );
     }
   }
 
@@ -21,7 +23,9 @@ export class AuthorsService extends BaseService<Author> {
     try {
       return super.findOne({ where: { orcid }, ...opts });
     } catch (error) {
-      throw new Error(`Error finding author by ORCID: ${orcid}`);
+      throw new Error(
+        `Error finding author by ORCID: ${orcid}` + (error as Error).message,
+      );
     }
   }
 }

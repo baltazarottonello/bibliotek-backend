@@ -21,39 +21,40 @@ export class Journal extends Model {
     type: DataType.STRING,
     allowNull: false,
   })
-  title: string;
+  declare title: string;
 
   @ForeignKey(() => Country)
   @Column({
     type: DataType.INTEGER,
-    allowNull: false,
+    allowNull: true,
+    defaultValue: null,
   })
-  country_id: number;
+  declare country_id: number;
 
   @Column({
     type: DataType.STRING,
     allowNull: true,
     defaultValue: null,
   })
-  abbr: string;
+  declare abbr: string;
 
   @Column({
     type: DataType.STRING,
     allowNull: true,
     defaultValue: null,
   })
-  issn: string;
+  declare issn: string;
 
   @Column({
     type: DataType.STRING,
     allowNull: true,
     defaultValue: null,
   })
-  issn_type: string;
+  declare issn_type: string;
 
   @HasMany(() => Article)
-  articles: Article[];
+  declare articles: Article[];
 
   @BelongsTo(() => Country)
-  country: Country;
+  declare country: Country;
 }
