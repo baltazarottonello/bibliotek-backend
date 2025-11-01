@@ -15,11 +15,6 @@ services:
     build:
       context: C:\Users\balti\Escritorio\Dev\biblioteK\
       dockerfile: Dockerfile
-    environment:
-      FRONTEND_PORT: ${FRONTEND_PORT}
-    ports:
-      - ${FRONTEND_PORT}:${FRONTEND_PORT}
-
     depends_on:
       - api
     networks:
